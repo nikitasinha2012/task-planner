@@ -1,0 +1,82 @@
+body {
+    font-family: 'Open Sans';font-size: 22px;
+}
+
+.todo-form-wrapper{
+    display: flex;
+    position: relative;
+    left: 36%;
+}
+
+.input-field{
+    height: 25px;
+    width: 400px;
+    outline: none;
+    border-color: #E2E7EC;
+   border-style: solid;
+   background-image: url(../images/add-blue.svg);
+    background-repeat: no-repeat;
+    text-indent: 20px;
+}
+#search:placeholder-shown {
+    background-image: url(../images/add-blue.svg);
+    background-position: 7px 7px;
+  }
+
+  #search:not(:placeholder-shown) { background-image: none;}
+::placeholder {
+    color: #0082D4;
+    opacity: 1; /* Firefox */
+  }
+  .errormessage{
+    font-size: 11px;
+    color:#c22a22;
+}
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #0082D4;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: #0082D4;
+  }
+
+.add-button{
+    background-color: #0082D4;
+    border: none;
+    height: 32px;
+    color: white;
+    width: 71px;
+    margin-left: 20px;
+    margin-top: 3px;
+    border-radius: 2px;
+    outline: none !important;
+
+}
+
+.sort-button{
+    background-color: #0082D4;
+    border: none;
+    height: 32px;
+    color: white;
+    width: 71px;
+    margin-left: 20px;
+    margin-top: 3px;
+    border-radius: 2px;
+    outline: none;
+}
+
+.error-box{
+    flex:10%;
+    align-self: flex-end;
+    padding-bottom: 4px;
+}
+form{
+    display: flex;
+}
+
+label {
+    position: relative;
+  }
+  
+  

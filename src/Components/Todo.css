@@ -1,0 +1,31 @@
+body {
+    background-color: #FCFCFC;
+}
+.list-wrapper{
+    display: flex;
+    position: relative;
+    left: 40%;
+    margin-top: 20px;
+}
+
+
+
+.delete-button{
+    margin-left: 15px;
+    border: none;
+    background-color: none !important;
+    height: 20px;
+    margin-top: 8px;
+
+}
+.taskArrows{
+    margin-left: 25px;
+}
+.up-arrow{
+    font-size: 13px;
+    color: #8b9da7;
+}
+.down-arrow{
+    font-size: 13px;
+    color: #8b9da7;
+}
