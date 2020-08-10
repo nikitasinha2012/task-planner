@@ -59,10 +59,10 @@ class TodoForm extends Component {
               className="input-field"
               value={this.state.text}
               onChange={this.handleChange}
-              id="search"
+              id="text"
               placeholder="Add a task"
               style={{
-                borderColor:errorMessage !== ""  ? "#c22a22" : "none"
+              borderColor:errorMessage !== ""  ? "#c22a22" : "none"
               }}
             />
             <div className="error-box">{errorMessage && <span className="errormessage">{errorMessage}</span>}</div>
