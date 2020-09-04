@@ -1,6 +1,6 @@
 h2{
 text-align: center;
-font-family: 'Open Sans', sans-serif;
+font-family: 'Playfair Display', serif;
 font-size: 36px;
 color: #444444;
 
@@ -24,21 +24,32 @@ h3{
     padding-left: 14px;
 }
 .task-status-wrapper{
-    margin-left: 43%;
-    margin-top: 2%;
+    margin-left: 41%;
+    margin-top: 5%;
 }
 
 .all-tasks-button{
     font-size: 20px;
     text-decoration: none;
-    color: #8b9da7;
+    color: deepskyblue;
+    font-family: 'Playfair Display', serif;
+    
+}
+ .all-tasks-button:hover
+{   text-decoration: none;
+    color: deepskyblue;
 }
 
 .active-task-button{
     font-size: 20px;
     text-decoration: none;
-    color: #8b9da7;
+    color:limegreen;
     margin-left: 20px;
+    font-family: 'Playfair Display', serif;
+}
+.active-task-button:hover
+{   text-decoration: none;
+    color: limegreen;
 }
 
 
@@ -46,6 +57,69 @@ h3{
     margin-left: 20px;
     font-size: 20px;
     text-decoration: none;
-    color: #8b9da7;
-    font-family: 'Open Sans'
+    color: Red;
+    font-family: 'Playfair Display', serif;
+    
 }
+
+.complete-task-button:hover
+{   text-decoration: none;
+    color: red;
+}
+
+@media screen and (max-width: 1207px) {
+    .task-status-wrapper{
+        margin-left: 39%;
+    }
+ }
+
+@media screen and (max-width: 1098px) {
+    .task-status-wrapper{
+        margin-left: 38%;
+    }
+ }
+ @media screen and (max-width: 916px) {
+    .task-status-wrapper{
+        margin-left: 35%;
+    }
+ }
+ @media screen and (max-width: 768px) {
+    .task-status-wrapper{
+        margin-left: 32%;
+    }
+  } 
+
+ @media screen and (max-width: 695px) {
+    .task-status-wrapper{
+        margin-left: 31%;
+    }
+ }
+ @media screen and (max-width: 621px) {
+    .task-status-wrapper{
+        margin-left: 29%;
+    }
+ }
+ @media screen and (max-width: 520px) {
+    .task-status-wrapper{
+        margin-left: 26%;
+    }
+ }
+ @media screen and (max-width: 500px) {
+    .task-status-wrapper{
+        margin-left: 23%;
+    }
+  } 
+
+ @media screen and (max-width: 425px) {
+    .task-status-wrapper{
+        margin-left: 21% !important;
+    }
+  }
+ @media screen and (max-width: 375px) {
+    .task-status-wrapper{
+        margin-left: 19% !important;
+    }
+ }
+ 
+ 
+   

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import './TodoForm.css';
-
-
+import { Modal, Button } from 'antd';
+import 'antd/dist/antd.css';
 class TodoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: "",
-      errorMessage: ''
+      text: ""
     };
   }
 
@@ -20,56 +19,58 @@ class TodoForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log('props', this.props)
-    if (this.state.text.length < 21) {
+    if (this.state.text !== "") {
       this.props.onSubmit({
         id: Date.now(),
         text: this.state.text,
         complete: false,
       });
       this.setState({
-        text: '',
-        errorMessage: ''
+        text: "",
+        visible:false
       });
     } else {
       this.setState({
-        errorMessage: 'Must be 20 characters or less'
+        visible:false
       })
     }
   }
-  handleSort = (event) => {
-    this.props.onClick({
-      text: this.state.text
-    })
-  }
-  handleKeyDown = (event) => {
-    console.log(event.target.value)
-  }
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  handleCancel = e => {
+    this.setState({
+      visible: false,
+    });
+  };
 
 
   render() {
-    const { errorMessage } = this.state;
     return (
-      <div className="todo-form-wrapper">
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              onKeyDown={this.handleKeyDown}
-              name="text"
-              className="input-field"
-              value={this.state.text}
-              onChange={this.handleChange}
-              id="text"
-              placeholder="Add a task"
-              style={{
-              borderColor:errorMessage !== ""  ? "#c22a22" : "none"
-              }}
-            />
-            <div className="error-box">{errorMessage && <span className="errormessage">{errorMessage}</span>}</div>
-          </div>
-          <button className="add-button" onClick={this.handleSubmit}>Add</button>
-        </form>
-        <button className="sort-button" onClick={this.handleSort}>Sort</button>
+      <div className="todo-wrapper">
+        <Button type="primary" className="click-button" onClick={this.showModal}>Click</Button>
+        <Modal
+          title="Basic Modal"
+          visible={this.state.visible}
+          onOk={this.handleSubmit}
+          onCancel={this.handleCancel}
+        >
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <input
+                onKeyDown={this.handleKeyDown}
+                name="text"
+                className="input-field"
+                value={this.state.text}
+                onChange={this.handleChange}
+                id="text"
+                placeholder="Add a task"
+              />
+            </div>
+          </form>
+        </Modal>
       </div>
 
     );

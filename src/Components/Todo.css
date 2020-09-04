@@ -1,6 +1,4 @@
-body {
-    background-color: #FCFCFC;
-}
+
 .list-wrapper{
     display: flex;
     position: relative;
@@ -15,17 +13,21 @@ body {
     border: none;
     background-color: none !important;
     height: 20px;
-    margin-top: 8px;
+}
 
-}
-.taskArrows{
-    margin-left: 25px;
-}
-.up-arrow{
-    font-size: 13px;
-    color: #8b9da7;
-}
-.down-arrow{
-    font-size: 13px;
-    color: #8b9da7;
-}
+@media screen and (max-width: 320px) {
+    .list-wrapper{
+        left: 33% !important;
+    }
+ }
+ @media screen and (max-width: 1024px) {
+    .list-wrapper{
+        left: 45%;
+    }
+ }
+ @media screen and (max-width: 1440px) {
+    .list-wrapper{
+        left: 47%;
+    }
+ }
+ 

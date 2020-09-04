@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './TodoList.css';
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
-
-
+import 'antd/dist/antd.css';
 
 class TodoList extends Component {
   constructor() {
@@ -16,10 +15,23 @@ class TodoList extends Component {
   }
 
   addTodo = (todo) => {
-    console.log('todo', todo)
     this.setState(state => ({
       todos: [todo, ...state.todos]
     }));
+    fetch('http://localhost:3000/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(todo),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
   sortList = () => {
@@ -49,22 +61,7 @@ class TodoList extends Component {
   };
 
 
-  handleMove = (id, direction) => {
-    const UP = -1
-    const DOWN = 1
-    const { todos } = this.state
-
-    const position = todos.findIndex((i) => i.id === id)
-    if (position < 0) {
-      throw new Error("Given item not found.")
-    } else if (direction === UP && position === 0 || direction === DOWN && position === todos.length - 1) {
-      return // canot move outside of array
-    }
-    const item = todos[position] // save item for later
-    const newItems = todos.filter((i) => i.id !== id) // remove item from array
-    newItems.splice(position + direction, 0, item)
-    this.setState({ todos: newItems })
-  }
+  
   updateTodoToShow = (s) => {
     this.setState({
       todoToShow: s
@@ -83,9 +80,10 @@ class TodoList extends Component {
     }));
   };
 
+
   render() {
     let todos = [];
-    console.log('sorted', this.state.todos)
+
 
     if (this.state.todoToShow === "all") {
       todos = this.state.todos;
@@ -97,26 +95,25 @@ class TodoList extends Component {
 
     return (
       <div>
-        <h2>Tasks</h2>
+        <h2>Todo App</h2>
         <TodoForm onSubmit={this.addTodo} onClick={this.sortList} />
-        <div className="task-status-wrapper">
-          <a className="all-tasks-button" onClick={() => this.updateTodoToShow("all")}>All</a>
-          <a className="active-task-button" onClick={() => this.updateTodoToShow("active")}>
-            Active
+          <div className="task-status-wrapper">
+            <a className="all-tasks-button" onClick={() => this.updateTodoToShow("all")}>Planned</a>
+            <a className="active-task-button" onClick={() => this.updateTodoToShow("active")}>
+              In-progress
           </a>
-          <a className="complete-task-button" onClick={() => this.updateTodoToShow("complete")}>
-            Completed
+            <a className="complete-task-button" onClick={() => this.updateTodoToShow("complete")}>
+              Done
           </a>
-        </div>
-        {todos.map(todo => (
-          <Todo
-            key={todo.id}
-            toggleComplete={() => this.toggleComplete(todo.id)}
-            onDelete={() => this.handleDeleteTodo(todo.id)}
-            handleMove={() => this.handleMove(todo.id)}
-            todo={todo}
-          />
-        ))}
+          </div>
+          {todos.map(todo => (
+            <Todo
+              key={todo.id}
+              toggleComplete={() => this.toggleComplete(todo.id)}
+              onDelete={() => this.handleDeleteTodo(todo.id)}
+              todo={todo}
+            />
+          ))}
       </div>
     );
   }
